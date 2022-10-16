@@ -1,0 +1,13 @@
+<img src='{{flags.svg}}' alt='{{name.official}}' width='20' />
+<span>{{name.official}}</span>
+<p>capital: {{capital}}</p>
+<p>population: {{population}}</p>
+<p>languages:
+  {{#each languages}}
+    {{#if @last}}
+      {{this}}
+    {{else}}
+      {{this}},
+    {{/if}}
+  {{/each}}
+</p>
