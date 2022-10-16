@@ -11,13 +11,13 @@ const DEBOUNCE_DELAY = 300;
 inputEl.addEventListener('input', debounce(searchCountries, DEBOUNCE_DELAY));
 
 function searchCountries(e) {
-  if (!e.target.value.trim()) {
+  if (e.target.value.trim().length < 2) {
     insertsHtmlText('');
+    Notify.info('Too many matches found. Please enter a more specific name.');
     return;
   }
 
   const name = e.target.value;
-  console.log(name);
 
   fetchCountries(name)
     .then(convertToArr)
@@ -48,7 +48,6 @@ function convertToArr(cantry) {
       languages: cantry.languages,
     });
   });
-  console.log(cantryArr);
   return cantryArr;
 }
 
